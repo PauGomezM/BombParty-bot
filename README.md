@@ -11,4 +11,10 @@ Even though the game can be played in multiple languages, the bot can be configu
 
 - Selenium: Used to automate navigator. It helps fetching syllable data, and typing the word back to the game when it has been computed.
 
+## Known issues:
 
+- If bot fails to provide a word before the time runs out, it will crash and stop the program. Game itself and the rest of players are not affected.
+
+## Disclaimer:
+
+This has been made with the aim of getting used to web scraping and other web automation with Python. It is a cheat and may get you banned.
