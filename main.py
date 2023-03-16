@@ -26,7 +26,7 @@ driver_service = Service('D:\Code\Drivers\chromedriver.exe')
 game_driver = webdriver.Chrome(service=driver_service)
 
 # driver.get(f'https://jklm.fun/{lobby}')
-game_driver.get('https://jklm.fun/RVXA')  # Hardcoded lobby (for testing)
+game_driver.get('https://jklm.fun/RNKQ')  # Hardcoded lobby (for testing)
 
 # Enters username
 inputElement = game_driver.find_elements(By.TAG_NAME, 'input')[1]
@@ -83,15 +83,15 @@ while game_on:
 
     for i in range(len(word)):
 
-        # Misspell case 1
-        if chance == 1:
-            letter_pos = random.randint(0, len(word) - 1)
-            if i == letter_pos:
-                i = 'c'
-
-            inputElement.send_keys(word[i])
-            time.sleep(0.1)
-            repeat_flag = True
+        # Misspell case 1 (WIP)
+        # if chance == 1:
+        #     letter_pos = random.randint(0, len(word) - 1)
+        #     if i == letter_pos:
+        #         i = 'c'
+        #
+        #     inputElement.send_keys(word[i])
+        #     time.sleep(0.1)
+        #     repeat_flag = True
 
         # Misspell case 2 (WIP)
         # elif chance == 2:
@@ -103,25 +103,24 @@ while game_on:
         #     time.sleep(0.1)
 
         # Correct spell (with chance to misspell mid-word)
-        else:
-            inputElement.send_keys(word[i])
-            type_time = random.uniform(0.02, 0.2)
-            time.sleep(type_time)
+        inputElement.send_keys(word[i])
+        type_time = random.uniform(0.02, 0.2)
+        time.sleep(type_time)
 
-            # Adds chance to make mistake and backspace
-            chance = random.randint(1, 35)
-            if chance == 2:
-                n_misspells = random.randint(1, 3)
-                # misspells n amount of letters
-                for _ in range(n_misspells):
-                    letter = random.randint(0, len(common_misspelled_letters) - 1)
-                    inputElement.send_keys(common_misspelled_letters[letter])
-                    time.sleep(0.05)
+        # Adds chance to make mistake and backspace
+        chance = random.randint(1, 35)
+        if chance == 2:
+            n_misspells = random.randint(1, 3)
+            # misspells n amount of letters
+            for _ in range(n_misspells):
+                letter = random.randint(0, len(common_misspelled_letters) - 1)
+                inputElement.send_keys(common_misspelled_letters[letter])
+                time.sleep(0.05)
+            time.sleep(0.1)
+            # Backspaces n amount of misspelled letters
+            for _ in range(n_misspells):
+                inputElement.send_keys(Keys.BACKSPACE)
                 time.sleep(0.1)
-                # Backspaces n amount of misspelled letters
-                for _ in range(n_misspells):
-                    inputElement.send_keys(Keys.BACKSPACE)
-                    time.sleep(0.1)
 
 
     if not game_driver.find_element(By.CLASS_NAME, 'selfTurn').is_displayed():
