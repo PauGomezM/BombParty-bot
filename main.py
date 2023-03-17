@@ -20,7 +20,7 @@ for word in words:
 
 # lobby = input('Lobby code? ')
 # player_username = input('Username? ')
-player_username = 'hermano'  # Hardcoded username (for testing)
+player_username = 'putonb'  # Hardcoded username (for testing)
 
 driver_service = Service('D:\Code\Drivers\chromedriver.exe')
 game_driver = webdriver.Chrome(service=driver_service)
