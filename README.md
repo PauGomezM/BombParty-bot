@@ -1,7 +1,7 @@
 # BombParty-bot
 
 BombParty is an online game at [jklm.fun](https://jklm.fun) where players have to provide a word that contains the given syllable before the bomb explodes. By using Selenium and several language dictionaries, this program is able to fetch data from the game, compute it, and type back an answer into the game automatically. It has been coded so that the answer is written as humanly as possible, simulating human typing and thinking.
-Moreover, there is a chance that the bot will misspell words in order to avoid suspicion from other players/parties.
+Note: The bot misspells words from time to time. This is not a bug, it's a feature :) (We want to avoid suspicion from other players at all costs)
 
 ![game gif](https://user-images.githubusercontent.com/95043218/225719743-3de852ef-29e4-4f04-ad2c-3fb9fdd96568.gif)
 
