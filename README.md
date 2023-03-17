@@ -10,6 +10,7 @@ Even though the game can be played in multiple languages, the bot can be configu
 ## Requirements
 
 - Selenium: Used to automate navigator. It helps fetching syllable data, and typing the word back to the game when it has been computed.
+- Navigator driver: For this project I have used Chromium's driver. The relative path is set to the program's folder; the driver will be usable as long as it is within.
 
 ## Known issues
 
