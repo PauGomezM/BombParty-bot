@@ -20,13 +20,13 @@ for word in words:
 
 # lobby = input('Lobby code? ')
 # player_username = input('Username? ')
-player_username = 'putonb'  # Hardcoded username (for testing)
+player_username = 'hermano'  # Hardcoded username (for testing)
 
-driver_service = Service('D:\Code\Drivers\chromedriver.exe')
+driver_service = Service('./chromedriver.exe')
 game_driver = webdriver.Chrome(service=driver_service)
 
 # driver.get(f'https://jklm.fun/{lobby}')
-game_driver.get('https://jklm.fun/RNKQ')  # Hardcoded lobby (for testing)
+game_driver.get('https://jklm.fun/SEUJ')  # Hardcoded lobby (for testing)
 
 # Enters username
 inputElement = game_driver.find_elements(By.TAG_NAME, 'input')[1]
@@ -42,44 +42,39 @@ game_driver.switch_to.frame(iframe)  # Switch to iframe
 time.sleep(4)
 
 # Main game loop
-repeat_flag = False
 game_on = True
 while game_on:
 
-    if not repeat_flag:
-        # Waits for turn
-        turn = False
-        while not turn:
-            time.sleep(0.2)
-            own_turn = game_driver.find_element(By.CLASS_NAME, 'selfTurn').is_displayed()
-            if own_turn:
-                turn = True
+    # Waits for turn
+    turn = False
+    while not turn:
+        time.sleep(0.2)
+        own_turn = game_driver.find_element(By.CLASS_NAME, 'selfTurn').is_displayed()
+        if own_turn:
+            turn = True
 
-        # Fetch syllable
-        syl = game_driver.find_element(By.CLASS_NAME, 'syllable').text
-        syl = syl.lower()
+    # Fetch syllable
+    syl = game_driver.find_element(By.CLASS_NAME, 'syllable').text
+    syl = syl.lower()
 
-        # Set a random words list starting point
-        x = random.randint(0, 610000)
-        # For each word in the list, check if it contains the desired syllable. Not accepted if already used before.
-        for i in range(x, len(words_list)):
-            if syl in words_list[i] and words_list[i] not in used_words:
-                word = words_list[i]
-                used_words.append(word)
-                break
+    # Set a random words list starting point
+    x = random.randint(0, 610000)
+    # For each word in the list, check if it contains the desired syllable. Not accepted if already used before.
+    for i in range(x, len(words_list)):
+        if syl in words_list[i] and words_list[i] not in used_words:
+            word = words_list[i]
+            used_words.append(word)
+            break
 
-        # Sets input location in the iframe's html text
-        narrowedElement = game_driver.find_element(By.CLASS_NAME, 'selfTurn')
-        inputElement = narrowedElement.find_element(By.TAG_NAME, 'input')
-        # Wait time to start typing
-        think_time = random.uniform(0.4, 2)
-        time.sleep(think_time)
-        # Type each letter
-        chance = random.randint(1, 100)
-        repeat_flag = False
-    else:
-        time.sleep(0.15)
-        chance = 50  # Random chance
+    # Sets input location in the iframe's html text
+    narrowedElement = game_driver.find_element(By.CLASS_NAME, 'selfTurn')
+    inputElement = narrowedElement.find_element(By.TAG_NAME, 'input')
+    # Wait time to start typing
+    think_time = random.uniform(0.4, 2)
+    time.sleep(think_time)
+    # Type each letter
+    chance = random.randint(1, 100)
+    repeat_flag = False
 
     for i in range(len(word)):
 
@@ -122,10 +117,7 @@ while game_on:
                 inputElement.send_keys(Keys.BACKSPACE)
                 time.sleep(0.1)
 
-
-    if not game_driver.find_element(By.CLASS_NAME, 'selfTurn').is_displayed():
-        continue
-
-    inputElement.send_keys(Keys.ENTER)
+    if game_driver.find_element(By.CLASS_NAME, 'selfTurn').is_displayed():
+        inputElement.send_keys(Keys.ENTER)
 
     time.sleep(1)
