@@ -103,7 +103,7 @@ while game_on:
         time.sleep(type_time)
 
         # Adds chance to make mistake and backspace
-        chance = random.randint(1, 35)
+        chance = random.randint(1, 45)
         if chance == 2:
             n_misspells = random.randint(1, 3)
             # misspells n amount of letters
