@@ -5,6 +5,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 import random
 
+lobby = 'YYYC'
+
 words_list = []
 used_words = []
 common_misspelled_letters = 'acourhmneio'
@@ -26,7 +28,7 @@ driver_service = Service('./chromedriver.exe')
 game_driver = webdriver.Chrome(service=driver_service)
 
 # driver.get(f'https://jklm.fun/{lobby}')
-game_driver.get('https://jklm.fun/SEUJ')  # Hardcoded lobby (for testing)
+game_driver.get(f'https://jklm.fun/{lobby}')  # Hardcoded lobby (for testing)
 
 # Enters username
 inputElement = game_driver.find_elements(By.TAG_NAME, 'input')[1]
