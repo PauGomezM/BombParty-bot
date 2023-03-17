@@ -25,4 +25,4 @@ Even though the game can be played in multiple languages, the bot can be configu
 
 ## Disclaimer
 
-This has been made with the aim of getting used to web scraping and other web automation with Python. It is a cheat and may get you banned.
+This has been made with the aim of getting used to web scraping and other web automation tasks with Python. This is a cheat and may get you banned.
