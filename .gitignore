@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local environment and secret files
+.env
+.env.*
+!.env.example
+
+# Browser drivers / executables
+chromedriver*
+geckodriver*
+*.exe
+
+# Tooling / editor
+.pytest_cache/
+.DS_Store
+.vscode/
+.idea/
