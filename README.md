@@ -10,15 +10,19 @@ Even though the game can be played in multiple languages, the bot can be configu
 
 ## Requirements
 
-- Selenium: Used to automate navigator. It helps fetching syllable data, and typing the word back to the game when it has been computed.
-- Navigator driver: For this project I have used Chromium's driver version 111. If your Chrome version does not match this project's driver version, I recommend [downloading the driver](https://chromedriver.chromium.org/downloads) of your current version.
+- Python
+- Selenium
+- Google Chrome or another browser supported by Selenium
+
+The repository no longer ships a browser-driver executable. Selenium is allowed to resolve/manage the appropriate driver instead of running a binary committed to source control.
 
 ## How to use
 
-1. Download zip file and extract in the desired location
-2. Execute main.py
-3. Console will prompt the user to input necessary data to join online lobby
-4. Relax and enjoy the show
+1. Clone or download the repository.
+2. Install Selenium in a virtual environment.
+3. Execute `main.py`.
+4. Console will prompt the user to input necessary data to join online lobby.
+5. Relax and enjoy the show.
 
 ## Known issues
 
