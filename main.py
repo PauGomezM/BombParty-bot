@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
@@ -36,8 +35,9 @@ for word in words:
     word = word.replace('ñ', 'n')
     words_list.append(word.strip())
 
-driver_service = Service('./chromedriver.exe')
-game_driver = webdriver.Chrome(service=driver_service)
+# Let Selenium manage the appropriate browser driver instead of executing a
+# repository-bundled binary.
+game_driver = webdriver.Chrome()
 
 game_driver.get(f'https://jklm.fun/{lobby}')
 # game_driver.get('https://jklm.fun/SEUJ')  # Hardcoded lobby (for testing)
@@ -87,26 +87,6 @@ while game_on:
     chance = random.randint(1, 100)
 
     for i in range(len(word)):
-        # Misspell case 1 (WIP)
-        # if chance == 1:
-        #     letter_pos = random.randint(0, len(word) - 1)
-        #     if i == letter_pos:
-        #         i = 'c'
-        #
-        #     inputElement.send_keys(word[i])
-        #     time.sleep(0.1)
-        #     repeat_flag = True
-
-        # Misspell case 2 (WIP)
-        # elif chance == 2:
-        #     random_letter = random.randint(0, len(common_misspelled_letters) - 1)
-        #     letter_pos = random.randint(0, len(word) - 1)
-        #     if i == word[letter_pos]:
-        #         i = random_letter
-        #     inputElement.send_keys(i)
-        #     time.sleep(0.1)
-
-        # Correct spell (with chance to misspell mid-word)
         inputElement.send_keys(word[i])
         type_time = random.uniform(0.02, 0.2)
         time.sleep(type_time)
@@ -115,13 +95,11 @@ while game_on:
         chance = random.randint(1, 70)
         if chance == 2:
             n_misspells = random.randint(1, 2)
-            # misspells n amount of letters
             for _ in range(n_misspells):
                 letter = random.randint(0, len(common_misspelled_letters) - 1)
                 inputElement.send_keys(common_misspelled_letters[letter])
                 time.sleep(0.05)
             time.sleep(0.1)
-            # Backspaces n amount of misspelled letters
             for _ in range(n_misspells):
                 inputElement.send_keys(Keys.BACKSPACE)
                 time.sleep(0.1)
